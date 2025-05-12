@@ -110,6 +110,9 @@ class Grocy(object):
         product_datas = [ProductData(**product) for product in raw_products]
         return [Product(product) for product in product_datas]
 
+    def foobar(self) -> str:
+        return 'foobar'
+
     def chores(
         self, get_details: bool = False, query_filters: list[str] | None = None
     ) -> list[Chore]:
