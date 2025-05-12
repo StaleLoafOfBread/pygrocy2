@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pygrocy2",
-    version="2.4.1",
+    version="2.4.2",
     author="Flipper",
     description="",
     long_description=long_description,
