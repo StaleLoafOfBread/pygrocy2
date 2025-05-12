@@ -40,14 +40,14 @@ class Chore(DataModel):
         self._id = response.chore_id
         self._last_tracked_time = response.last_tracked_time
         self._next_estimated_execution_time = response.next_estimated_execution_time
-        self._name = None
+        self._name = self._name = "FAKE"#None
         self._last_done_by = None
 
     # noinspection PyPep8Naming
     def _init_from_ChoreDetailsResponse(self, response: ChoreDetailsResponse):
         chore_data = response.chore
         self._id = chore_data.id
-        self._name = chore_data.name
+        self._name = "FAKE" #chore_data.name
         self._description = chore_data.description
 
         if chore_data.period_type is not None:
