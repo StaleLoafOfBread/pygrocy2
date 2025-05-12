@@ -30,6 +30,7 @@ class AssignmentType(str, Enum):
 
 class Chore(DataModel):
     def __init__(self, response):
+        print("Entered Chore init")
         if isinstance(response, CurrentChoreResponse):
             self._init_from_CurrentChoreResponse(response)
         elif isinstance(response, ChoreDetailsResponse):
@@ -69,6 +70,7 @@ class Chore(DataModel):
         self._next_execution_assigned_to_user_id = (
             chore_data.next_execution_assigned_to_user_id
         )
+
         self._userfields = chore_data.userfields
 
         self._last_tracked_time = response.last_tracked
@@ -88,7 +90,7 @@ class Chore(DataModel):
     def get_details(self, api_client: GrocyApiClient):
         details = api_client.get_chore(self.id)
         self._init_from_ChoreDetailsResponse(details)
-        self._userfields = api_client.get_userfields( "chores", self.id )
+        # self._userfields = api_client.get_userfields( "chores", self.id )
 
     @property
     def id(self) -> int:
