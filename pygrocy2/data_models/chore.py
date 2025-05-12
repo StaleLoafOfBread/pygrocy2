@@ -27,10 +27,13 @@ class AssignmentType(str, Enum):
     RANDOM = "random"
     IN_ALPHABETICAL_ORDER = "in-alphabetical-order"
 
+import logging
+
+_LOGGER = logging.getLogger(__name__)
 
 class Chore(DataModel):
     def __init__(self, response):
-        print("Entered Chore init")
+        _LOGGER.warning("Entered Chore init")
         if isinstance(response, CurrentChoreResponse):
             self._init_from_CurrentChoreResponse(response)
         elif isinstance(response, ChoreDetailsResponse):
