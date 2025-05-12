@@ -27,13 +27,9 @@ class AssignmentType(str, Enum):
     RANDOM = "random"
     IN_ALPHABETICAL_ORDER = "in-alphabetical-order"
 
-import logging
-
-_LOGGER = logging.getLogger(__name__)
 
 class Chore(DataModel):
     def __init__(self, response):
-        _LOGGER.warning("Entered Chore init")
         if isinstance(response, CurrentChoreResponse):
             self._init_from_CurrentChoreResponse(response)
         elif isinstance(response, ChoreDetailsResponse):
@@ -74,7 +70,7 @@ class Chore(DataModel):
             chore_data.next_execution_assigned_to_user_id
         )
 
-        self._userfields = chore_data.userfields
+        self._userfields = {"TEST": "TEST"}  # Placeholder for userfields
 
         self._last_tracked_time = response.last_tracked
         self._next_estimated_execution_time = response.next_estimated_execution_time
